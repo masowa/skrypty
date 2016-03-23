@@ -1,0 +1,9 @@
+#!/bin/bash
+PIDS=$(ps aux | grep $1 | grep -v grep | grep -v zabij | awk '{print $2}')
+
+if [ -z "$PIDS" ]; then
+	echo "$1 is not running!"
+else
+	kill $PIDS
+	echo "$1 was killed!"
+fi
